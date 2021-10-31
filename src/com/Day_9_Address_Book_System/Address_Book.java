@@ -15,6 +15,30 @@ public class Address_Book
 	private static ArrayList<Contacts>list = new ArrayList<>();
 	
 	/*
+	 * This Method Allows You To Delete Any Specific Contact From The Array List
+	 * With The Help Of The First Name.
+	 */
+	
+	public void deleteContact()
+	{
+		Scanner sc = new Scanner(System.in);
+        System.out.println("Enter The Name to Delete Contact: ");
+        String name=sc.nextLine();
+        for (Contacts C : list) 
+        {
+            if (name.equalsIgnoreCase(C.getFirstName()))
+            {
+                System.out.println("Entered Name found in the Address Book, deleting contact");
+                list.remove(C);
+            }
+            else
+            {
+                System.out.println("Entered Name not found in the Address Book");
+            }
+        }
+    }
+	
+	/*
 	 * This Method Allows You To Edit The Details Of a Specific Contact and
 	 * Adds That Edited Contact Details To The Array List.
 	 */
@@ -93,6 +117,7 @@ public class Address_Book
 		System.out.println("1. Add Contacts");
 		System.out.println("2. Show All Contacts");
 		System.out.println("3. Edit Contact");
+		System.out.println("4. Delete Contact");
 		System.out.println("Enter Your Choice");
 		int choice = sc.nextInt();
 		while(choice>=1)
@@ -120,6 +145,10 @@ public class Address_Book
 				case 3:
 					Contacts_1.editContact();
 					break;
+					
+				case 4:
+					Contacts_1.deleteContact();
+					break;
 		
 				default:
 					System.out.println("Wrong InPut");
@@ -130,6 +159,7 @@ public class Address_Book
 			System.out.println("1. Add Contacts");
 			System.out.println("2. Show All Contacts");
 			System.out.println("3. Edit Contact");
+			System.out.println("4. Delete Contact");
 			System.out.println("Enter Your Choice");
 			choice = sc.nextInt();
 		}
