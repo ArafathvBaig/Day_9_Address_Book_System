@@ -15,6 +15,51 @@ public class Address_Book
 	private static ArrayList<Contacts>list = new ArrayList<>();
 	
 	/*
+	 * This Method Allows You To Edit The Details Of a Specific Contact and
+	 * Adds That Edited Contact Details To The Array List.
+	 */
+	
+	public void editContact()
+	{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter The Name to Edit Contact: ");
+        String name=sc.nextLine();
+        for (Contacts C : list) 
+        {
+            if (name.equalsIgnoreCase(C.getFirstName())) 
+            {
+                System.out.println("Entered Name found in the Contacts");
+                System.out.println("Enter the updated first name");
+                this.firstName=sc.next();
+                C.setFirstName(firstName);
+                System.out.println("Enter the updated last name");
+                this.lastName=sc.next();
+                C.setLastName(lastName);
+                System.out.println("Enter the updated emailID");
+                this.email = sc.next();
+                C.setEmailId(email);
+                System.out.println("Enter the updated address");
+                this.address=sc.next();
+                C.setAddress(address);
+                System.out.println("Enter the updated city");
+                this.city=sc.next();
+                C.setCity(city);
+                System.out.println("Enter the updated zipcode");
+                this.zip = sc.nextInt();
+                C.setZip(zip);
+                System.out.println("Enter the updated phoneNumber");
+                this.phoneNo = sc.nextInt();
+                C.setPhoneNo(phoneNo);
+                C.display();
+            } 
+            else
+            {
+                System.out.println("Entered name not  found in the AddressBook");
+            }
+        }
+    }
+	
+	/*
 	 * This Method will Get The Details From the USER and
 	 * ADD those details to the Array List Name Contacts through the object
 	 */
@@ -47,6 +92,7 @@ public class Address_Book
 		System.out.println("0. Exit");
 		System.out.println("1. Add Contacts");
 		System.out.println("2. Show All Contacts");
+		System.out.println("3. Edit Contact");
 		System.out.println("Enter Your Choice");
 		int choice = sc.nextInt();
 		while(choice>=1)
@@ -70,6 +116,10 @@ public class Address_Book
 						System.out.println("Phone Number:: "+c.getPhoneNo());
 					}
 					break;
+					
+				case 3:
+					Contacts_1.editContact();
+					break;
 		
 				default:
 					System.out.println("Wrong InPut");
@@ -79,6 +129,7 @@ public class Address_Book
 			System.out.println("0. Exit");
 			System.out.println("1. Add Contacts");
 			System.out.println("2. Show All Contacts");
+			System.out.println("3. Edit Contact");
 			System.out.println("Enter Your Choice");
 			choice = sc.nextInt();
 		}
